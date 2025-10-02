@@ -1,1 +1,1 @@
-# declarativa_ejercicios
+Elmer Josue Galvez Vasquez 00130518
