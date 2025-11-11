@@ -95,3 +95,87 @@
 (display "el promedio de la lista es: ")
 (promedio_lista '(4 6 8 10))
 (displayln "")
+
+(displayln "9. ELEVAR LOS ELEMENTOS DE UNA LISTA A UNA POTENCIA")
+(define (recursion base exp)
+    (cond
+        [(= exp 0) 1]
+        [else (* base (recursion base (- exp 1)))]
+    )
+)
+
+(define (elevar_lista n lista)
+    (map
+        (lambda 
+            (x)
+            (recursion x n)
+        )
+        lista
+    )
+)
+
+(display "La nueva lista con los elementos a la potencia es: ")
+(elevar_lista 2 '(2 3 4))
+(displayln "")
+
+(displayln "10. CONTAR CUANTOS ELMENTOS SUPERAN UN VALOR DADO")
+(define (contar_mayores n lista)
+    (length
+        (filter
+            (lambda
+                (x)
+                (> x n)
+            )
+            lista
+        )
+    )
+)
+
+(display "el total de numeros mayores es: ")
+(contar_mayores 3 '(4 5 6 1))
+(displayln "")
+
+(displayln "11. APLICAR UNA FUNCION DOS VECES")
+(define (recursion_df f cont valor)
+    (cond
+        [(= cont 0) valor]
+        [else (recursion_df f (- cont 1) (f valor))]
+    )
+)
+
+(define (doble_funcion f)
+    (lambda
+        (x)
+        (recursion_df f 2 x)
+    )
+)
+
+(display "la funcion aplicada 2 veces es: ")
+((doble_funcion sqrt) 16)
+(displayln "")
+
+(displayln "12. MINI RETO")
+(define (reto lista)
+    (foldl
+        *
+        1
+        (
+            filter
+                (lambda
+                    (x)
+                    (> x 5)
+                )
+                (
+                    map(lambda
+                        (x)
+                        (* x 1)
+                    )
+                    lista
+                )
+        )
+    )
+)
+
+(display "el producto de los numeros mayores a 5 es: ")
+(reto '(2 5 6 8 3 10))
+(displayln "")
